@@ -1,0 +1,7 @@
+{
+  "name": "Worplace-App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
