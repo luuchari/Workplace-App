@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ filteredEmployees.length }} Employees</ion-title>
+  <ion-row>
+    <ion-col>
+      <p>name</p>
+    </ion-col>
+    <ion-col>
+      <ion-text>employee</ion-text>
+      <p>position</p>
+    </ion-col>
+    <ion-col>
+      <ion-text>Time attendance</ion-text>
+      <p>Date</p>
+    </ion-col>
+  </ion-row>
+
+      <ion-col>
+        <ion-text>Time attendnce</ion-text>
+        <p>Date</p>
+      </ion-col>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-list>
+   <ion-item *ngFor="let emp of filteredEmployees">
+    <ion-label>
+      <h2>{{emp.name}}</h2>
+      <p>{{emp.position}}</p>
+    </ion-label>
+
+   </ion-item>
+  </ion-list> 
+  
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button id="add-model" size="small">
+      <ion-icon name ="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <ion-modal trigger="add-model" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()" [strong]="true">cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Add Employee</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input
+            label="Enter Employee Name"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="name"
+            [(ngModel)]="name"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Enter Employee Position"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="position"
+            [(ngModel)]="position"
+          ></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  
+
+    
+    
+  
+  
